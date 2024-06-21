@@ -1,0 +1,41 @@
+# genTypes
+
+GenTypes is a CLI for generating typescript types from go types
+
+## Installation
+
+```shell
+go install github.com/Embiggenerd/genTypes
+```
+
+## Usage
+```shell
+genTypes -s types.go -t types.d.ts
+```
+
+## Expectation
+
+_types.go_
+
+```go
+type ErrorData struct {
+	StatusCode int    `json:"status_code,omitempty"`
+	Message    string `json:"message,omitempty"`
+	Public     bool   `json:"public"`
+}
+
+type Errors []ErrorData
+
+```
+
+_types.d.ts_
+
+```typescript
+export interface ErrorData {
+  status_code?: number /* int */;
+  message?: string;
+  public: boolean;
+}
+
+export type Errors = ErrorData[];
+```

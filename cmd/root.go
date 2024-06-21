@@ -22,8 +22,8 @@ var rootCmd = &cobra.Command{
 	Short: "Generate typescript file from go types",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		sourceFile, _ := cmd.Flags().GetString("s")
-		targetFile, _ := cmd.Flags().GetString("t")
+		sourceFile, _ := cmd.Flags().GetString("source")
+		targetFile, _ := cmd.Flags().GetString("target")
 
 		fset := token.NewFileSet()
 		f, err := parser.ParseFile(fset, sourceFile, nil, 0)
@@ -80,6 +80,6 @@ func Execute() {
 
 func init() {
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rootCmd.Flags().String("s", "types.go", "Source go file to read from")
-	rootCmd.Flags().String("t", "types.d.ts", "Target file to write to")
+	rootCmd.Flags().StringP("source", "s", "types.go", "Source file to read from")
+	rootCmd.Flags().StringP("target", "t", "types.d.ts", "Target file to write to")
 }
