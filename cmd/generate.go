@@ -150,6 +150,10 @@ func writeStructFields(s *strings.Builder, fields []*ast.Field, depth int) {
 			}
 		}
 
+		if len(name) == 0 {
+			name = fieldName
+		}
+
 		writeIndent(s, depth+1)
 		quoted := !validJSName(name)
 		if quoted {

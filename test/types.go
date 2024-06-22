@@ -79,6 +79,6 @@ type UserExitedChatData struct {
 type CurrentGuestsData []CurrentGuest
 
 type CurrentGuest struct {
-	Name string `json:"name,omitempty"`
-	ID   uint   `json:"id,omitempty"`
+	Name string
+	ID   uint
 }
