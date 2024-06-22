@@ -18,10 +18,12 @@ genTypes -s types.go -t types.d.ts
 _types.go_
 
 ```go
-type ErrorData struct {
-	StatusCode int    `json:"status_code,omitempty"`
-	Message    string `json:"message,omitempty"`
-	Public     bool   `json:"public"`
+ype ErrorData struct {
+	StatusCode int       `json:"status_code,omitempty"`
+	Message    string    `json:"message,omitempty"`
+	Public     bool      `json:"public"`
+	CreatedAt  time.Time `genType:"Date"`
+	Deleted    bool
 }
 
 type Errors []ErrorData
@@ -35,6 +37,8 @@ export interface ErrorData {
   status_code?: number /* int */;
   message?: string;
   public: boolean;
+  CreatedAt: Date;
+  Deleted: boolean;
 }
 
 export type Errors = ErrorData[];

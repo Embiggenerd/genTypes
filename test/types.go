@@ -1,84 +1,13 @@
 package types
 
-type WebsocketMessage struct {
-	Type string `json:"type,omitempty"`
-	Data any    `json:"data,omitempty"`
-}
-
-type Event struct {
-	Event string      `json:"event"`
-	Data  interface{} `json:"data"`
-}
-
-type Question struct {
-	Ask string `json:"ask,omitempty"`
-}
-
-type WorkOrder struct {
-	Order   string      `json:"order,omitempty"`
-	Details interface{} `json:"details,omitempty"`
-}
-
-type JoinedRoomData struct {
-	RoomID   uint              `json:"room_id,omitempty"`
-	ChatLog  []UserMessageData `json:"chat_log"`
-	Name     string            `json:"name,omitempty"`
-	Visitors []Visitor         `json:"visitors"`
-}
-
-type Visitor struct {
-	ID   uint   `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
-}
+import "time"
 
 type ErrorData struct {
-	StatusCode int    `json:"status_code,omitempty"`
-	Message    string `json:"message,omitempty"`
-	Public     bool   `json:"public,omitempty"`
+	StatusCode int       `json:"status_code,omitempty"`
+	Message    string    `json:"message,omitempty"`
+	Public     bool      `json:"public"`
+	CreatedAt  time.Time `genType:"Date"`
+	Deleted    bool
 }
 
-type UserLoggedInData struct {
-	Name        string `json:"name,omitempty"`
-	ID          uint   `json:"id,omitempty"`
-	AccessToken string `json:"access_token,omitempty"`
-}
-
-type StreamIDUserNameData struct {
-	StreamID string `json:"stream_id,omitempty"`
-	Name     string `json:"name,omitempty"`
-}
-
-type DirectMessageData struct {
-	Text       string `json:"text,omitempty"`
-	ToUserID   uint   `json:"to_user_id,omitempty"`
-	FromUserID uint   `json:"from_user_id,omitempty"`
-}
-
-type UserMessageData struct {
-	Text         string `json:"text,omitempty"`
-	FromUserName string `json:"from_user_name,omitempty"`
-	FromUserID   uint   `json:"from_user_id,omitempty"`
-	UserVerified bool   `json:"user_verified"`
-	ToUserID     uint   `json:"to_user_id,omitempty"`
-}
-
-type UserMessageWorkOrderDetail struct {
-	Text     string `json:"text,omitempty"`
-	ToUserID uint   `json:"to_user_id,omitempty"`
-}
-
-type UserMessageWorkOrder struct {
-	Order   string                     `json:"order,omitempty"`
-	Details UserMessageWorkOrderDetail `json:"details,omitempty"`
-}
-
-type UserExitedChatData struct {
-	Name string `json:"name,omitempty"`
-	ID   uint   `json:"id,omitempty"`
-}
-type CurrentGuestsData []CurrentGuest
-
-type CurrentGuest struct {
-	Name string
-	ID   uint
-}
+type Errors []ErrorData

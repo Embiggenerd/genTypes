@@ -139,7 +139,7 @@ func writeStructFields(s *strings.Builder, fields []*ast.Field, depth int) {
 				optional = yamlTag.HasOption("omitempty")
 			}
 
-			tstypeTag, err := tags.Get("tstype")
+			tstypeTag, err := tags.Get("genType")
 			if err == nil {
 				tstype = tstypeTag.Name
 				if tstype == "-" || tstypeTag.HasOption("extends") {
