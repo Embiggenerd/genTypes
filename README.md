@@ -18,7 +18,7 @@ genTypes -s types.go -t types.d.ts
 _types.go_
 
 ```go
-ype ErrorData struct {
+type ErrorData struct {
 	StatusCode int       `json:"status_code,omitempty"`
 	Message    string    `json:"message,omitempty"`
 	Public     bool      `json:"public"`
